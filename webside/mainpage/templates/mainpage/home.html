@@ -1,0 +1,100 @@
+<head>
+    <meta charset="utf-8">
+    <title>My Page</title>
+    <style>
+        /* Global styles */
+html {
+    background-color: #161616; /* dark background color */
+    color: #fff; /* light text color */
+  }
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Style for form elements */
+  form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    height: 100px; /* Set height of form to take up whole top part */
+    background-color: #1f1f1f; /* dark background color */
+  }
+  input[type="text"] {
+    flex: 1; /* Set input box to take up all available space */
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-bottom: 2px solid #ccc;
+    font-size: 16px;
+    margin-right: 10px;
+    margin-left: 10px;
+    background-color: #3f3f3f; /* dark background color */
+    color: #fff; /* light text color */
+  }
+  button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  /* Style for comments box */
+  .comments-box {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #282828; /* dark background color */
+    color: #fff; /* light text color */
+    text-align: center;
+    margin: 0;
+    padding-top: 100px; /* Add padding to push comments box down below form */
+  }
+  .comments-box p {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+    </style>
+
+
+    <script src="https://cdn.bokeh.org/bokeh/release/bokeh-3.1.0.min.js"></script>
+    <script src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.1.0.min.js"></script>
+    <script src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.1.0.min.js"></script>
+    <script src="https://cdn.bokeh.org/bokeh/release/bokeh-api-3.1.0.min.js"></script>
+
+      <!-- include the Bokeh script -->
+</head>
+<body>
+  <form method="POST">
+    {% csrf_token %}
+    <input type="text" name="input_text" placeholder="Enter some input">
+    <button type="submit">Submit</button>
+  </form>
+
+  <div class="comments-box">
+      {% if input_text %}
+          <p>You entered: {{ input_text }}</p>
+      {% endif %}
+
+      {{ output.plot_div|safe }}  <!-- access plot_div key of the output dictionary -->
+
+      {{ output.plot_script|safe }}  <!-- access plot_script key of the output dictionary -->
+
+      {% if previous_outputs %}
+          <hr>  <!-- add a horizontal line to separate the current and previous outputs -->
+          <h3>Previous Outputs:</h3>
+          {% for output in previous_outputs %}
+              {{ output.plot_div|safe }}  <!-- access plot_div key of each previous output dictionary -->
+
+              {{ output.plot_script|safe }}  <!-- access plot_script key of each previous output dictionary -->
+          {% endfor %}
+      {% endif %}
+  </div>
+</body>
+
+test_table: x, y:bar

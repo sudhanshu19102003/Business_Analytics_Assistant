@@ -1,0 +1,65 @@
+/* Global styles */
+html {
+    background-color: #1f1f1f; /* dark background color */
+    color: #fff; /* light text color */
+  }
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Style for form elements */
+  form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    height: 100px; /* Set height of form to take up whole top part */
+    background-color: #1f1f1f; /* dark background color */
+  }
+  input[type="text"] {
+    flex: 1; /* Set input box to take up all available space */
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    font-size: 16px;
+    margin-right: 10px;
+    background-color: #1f1f1f; /* dark background color */
+    color: #fff; /* light text color */
+  }
+  button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  /* Style for comments box */
+  .comments-box {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #282828; /* dark background color */
+    color: #fff; /* light text color */
+    text-align: center;
+    margin: 0;
+    padding-top: 100px; /* Add padding to push comments box down below form */
+  }
+  .comments-box p {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  /* Style for Bokeh plot */
+  .bokeh-plot {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #000; /* black background color */
+    margin: 0 auto;
+    max-width: 100%;
+  }
+  
